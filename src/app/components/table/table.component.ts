@@ -12,12 +12,12 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class TableComponent implements OnInit {
   cursos: Curso[] = [
-    {nombre: 'Angular', comision:'32320', profesor:'Abner'},
-    {nombre: 'Python', comision:'32320', profesor:'Gustavo'},
-    {nombre: 'ReactJS', comision:'32320', profesor:'Lucas'},
-    {nombre: 'Sass', comision:'32320', profesor:'Fernando'},
+    {id: 1, nombre: 'Angular', comision:'32320', profesor:'Abner'},
+    {id: 2,nombre: 'Python', comision:'32320', profesor:'Gustavo'},
+    {id: 3,nombre: 'ReactJS', comision:'32320', profesor:'Lucas'},
+    {id: 4,nombre: 'Sass', comision:'32320', profesor:'Fernando'},
   ];
-  columnas: string[] = ['nombre', 'comision', 'profesor', 'acciones'];
+  columnas: string[] = ['nombre', 'comision', 'profesor', 'editar', 'borrar'];
   dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>(this.cursos);
   
   constructor(
@@ -38,4 +38,14 @@ export class TableComponent implements OnInit {
       width: '350px'
     })
   }
+
+  eliminar(elemento: Curso){
+    this.dataSource.data = this.dataSource.data.filter((curso: Curso) => curso.id != elemento.id);
+    console.log('boton de eliminar')
+  }
+  borrar(id: number) {
+    delete(this.cursos[id-1])
+    this.dataSource.data = this.cursos
+  }
+
 }

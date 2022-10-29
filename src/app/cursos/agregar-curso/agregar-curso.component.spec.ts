@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogComponent } from './dialog.component';
+import { AgregarCursoComponent } from './agregar-curso.component';
 
-describe('DialogComponent', () => {
-  let component: DialogComponent;
-  let fixture: ComponentFixture<DialogComponent>;
+describe('AgregarCursoComponent', () => {
+  let component: AgregarCursoComponent;
+  let fixture: ComponentFixture<AgregarCursoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogComponent ]
+      declarations: [ AgregarCursoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DialogComponent);
+    fixture = TestBed.createComponent(AgregarCursoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

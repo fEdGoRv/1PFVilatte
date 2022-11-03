@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../cursos/navbar/navbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { ShareModule } from '../share/share.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -12,14 +12,16 @@ import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-en
   declarations: [
     ToolbarComponent,
     InicioComponent,
-    PaginaNoEncontradaComponent
+    PaginaNoEncontradaComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
     ShareModule
   ],
   exports:[
-    ToolbarComponent
+    ToolbarComponent,
+    NavbarComponent
   ]
 })
 export class CoreModule { }

@@ -6,8 +6,6 @@ import { AgregarCursoComponent } from './agregar-curso/agregar-curso.component';
 import { CursoInicioComponent } from './curso-inicio/curso-inicio.component';
 import { CursosRoutingModule } from './cursos-routing.module';
 import { TableComponent } from './table/table.component';
-import { NavbarComponent } from './navbar/navbar.component';
-
 
 
 @NgModule({
@@ -15,8 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     TableComponent,
     EditarCursoComponent,
     AgregarCursoComponent,
-    CursoInicioComponent,
-    NavbarComponent
+    CursoInicioComponent
   ],
   imports: [
     CommonModule,

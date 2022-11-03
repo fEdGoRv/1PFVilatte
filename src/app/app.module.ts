@@ -10,6 +10,8 @@ import { CursosModule } from './cursos/cursos.module';
 import { StudentModule } from './student/student.module';
 import { CoreModule } from './core/core.module';
 
+import { AutenticationModule } from './autentication/autentication.module';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CoreModule } from './core/core.module';
     ShareModule,
     CursosModule,
     StudentModule,
-    CoreModule
+    CoreModule,
+    AutenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

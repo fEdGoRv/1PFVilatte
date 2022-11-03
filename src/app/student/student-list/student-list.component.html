@@ -1,0 +1,28 @@
+<div class="container d-flex flex-wrap">
+    <div class="container d-flex">
+        <mat-form-field>
+            <mat-label>Filtrar:</mat-label>
+            <input type="text" placeholder="Buscar..." matInput>
+        </mat-form-field>
+
+        <div >
+            <button mat-raised-button (click)="openDialog()">Add student</button>
+        </div>
+    </div>
+
+    <ul *ngFor="let student of students">
+        <mat-card class="W=150px H=200px">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{student.nombre}} {{student.apellido}}</mat-card-title>
+                <mat-card-subtitle>{{student.email}}</mat-card-subtitle>
+                <mat-card-subtitle>Edad: {{student.edad}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src={{student.img}} alt="Photo of a Shiba Inu">
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </ul>
+</div>

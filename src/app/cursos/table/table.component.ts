@@ -18,25 +18,26 @@ export class TableComponent implements OnInit, OnDestroy {
   cursos!:Curso[];
   suscripcion: any;
   cursos$!: Observable<Curso[]>;
-  columnas: string[] = ['nombre', 'comision', 'profesor', 'editar', 'borrar'];
-  dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>(this.cursos) ;
+  columnas: string[] = ['id', 'imagen','nombre', 'comision', 'profesor', 'fechaInicio', 'fechaFin', 'editar', 'borrar'];
+  dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>();
   
   constructor(
     private dialog: MatDialog,
     private cursosService: CursosService,
     private router: Router
   ) {
-     this.suscripcion=this.cursos$.subscribe({
+    this.cursos$ = this.cursosService.obtenerCursos();
+   }
+
+  ngOnInit(): void {
+    this.suscripcion=this.cursos$.subscribe({
       next:(cursos:Curso[])=>{this.cursos=cursos}
      ,
      error: (error) => {
        console.error(error);
      }
    });
-   }
-
-  ngOnInit(): void {
-    this.cursos$ = this.cursosService.obtenerCursos();
+   this.dataSource.data=this.cursos
   }
 
   filtrar(event: Event){
@@ -51,6 +52,7 @@ export class TableComponent implements OnInit, OnDestroy {
   }
   eliminarCurso(id: number){
     this.cursosService.eliminarCurso(id);
+    this.cursos$ = this.cursosService.obtenerCursos();
   }
 
   editarCurso(curso: Curso){
@@ -69,5 +71,8 @@ export class TableComponent implements OnInit, OnDestroy {
     ngOnDestroy(){
       this.suscripcion.unsubscribe();
     }
+    irAgregarCurso () {
+      this.router.navigate(['cursos/agregar'])
+    }; 
 
 }

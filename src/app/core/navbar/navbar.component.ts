@@ -14,15 +14,13 @@ export class NavbarComponent implements OnInit {
     private router: Router
   ) {}
 
-  irAgregarCurso () {
-    this.router.navigate(['cursos/agregar'])
+  irACurso () {
+    this.router.navigate(['cursos/'])
   };
-  irEditarCurso () {
-    this.router.navigate(['cursos/editar'])
+  irAStudent () {
+    this.router.navigate(['student/'])
   }; 
-  irTable () {
-    this.router.navigate(['cursos/listar'])
-  };   
+  
   
   ngOnInit(): void {
   }

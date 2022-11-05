@@ -9,6 +9,9 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input'
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 @NgModule({
   declarations: [],
@@ -22,7 +25,10 @@ import {MatInputModule} from '@angular/material/input'
     MatTreeModule,
     MatButtonModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatNativeDateModule
   ],
   exports:[
     MatTableModule,
@@ -33,7 +39,10 @@ import {MatInputModule} from '@angular/material/input'
     MatTreeModule,
     MatButtonModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { 

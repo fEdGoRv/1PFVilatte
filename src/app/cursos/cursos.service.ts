@@ -7,14 +7,13 @@ import { Curso } from '../models/curso';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CursosService {
-
-
 
   constructor(
     private http: HttpClient
   ) {
-
+    
   }
 
   obtenerCursos(): Observable<Curso[]> {
@@ -23,9 +22,10 @@ export class CursosService {
         'content-type': 'aplication/json',
         'encoding': 'UTF-8'
       })
-    }).pipe(catchError(this.manejarError))
+    }).pipe(catchError(this.manejarError));
+    
   }
-
+  
 
   obtenerCurso(id: number): Observable<Curso> {
     return this.http.get<Curso>(`${environment.api}/cursos/${id}`, {
@@ -35,6 +35,7 @@ export class CursosService {
       })
     }).pipe(catchError(this.manejarError))
   }
+  
 
   agregarCurso(curso: Curso) {
     this.http.post(`${environment.api}/cursos`, curso, {
@@ -47,7 +48,7 @@ export class CursosService {
 
 
   editarCurso(curso: Curso) {
-    this.http.put(`${environment.api}/cursos/${curso.id}`, curso).pipe(catchError(this.manejarError)).subscribe()
+    this.http.put(`${environment.api}/cursos/${curso.id}`, curso).pipe(catchError(this.manejarError)).subscribe(console.log)
   }
 
   eliminarCurso(id: number) {

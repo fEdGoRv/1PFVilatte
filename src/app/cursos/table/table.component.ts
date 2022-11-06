@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class TableComponent implements OnInit, OnDestroy {
   cursos!:Curso[];
-  suscripcion: any;
+  suscripcion: any = [];
   cursos$!: Observable<Curso[]>;
   columnas: string[] = ['id', 'imagen','nombre', 'comision', 'profesor', 'fechaInicio', 'fechaFin', 'editar', 'borrar'];
   dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>();
@@ -29,6 +29,7 @@ export class TableComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     this.cursos$ = this.cursosService.obtenerCursos();
+    this.cursos$.subscribe(res=>console.log(res))
    }
 
   ngOnInit(): void {

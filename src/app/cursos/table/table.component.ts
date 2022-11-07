@@ -28,19 +28,20 @@ export class TableComponent implements OnInit, OnDestroy {
     private cursosService: CursosService,
     private router: Router
   ) {
-    this.cursos$ = this.cursosService.obtenerCursos();
-    this.cursos$.subscribe(res=>console.log(res))
    }
 
   ngOnInit(): void {
+    this.cursos$ = this.cursosService.obtenerCursos();
     this.suscripcion=this.cursos$.subscribe({
-      next:(cursos:Curso[])=>{this.cursos=cursos}
+      next:(cursos:Curso[])=>{
+        this.cursos=cursos
+        this.dataSource.data=this.cursos
+      }
      ,
      error: (error) => {
        console.error(error);
      }
    });
-   this.dataSource.data=this.cursos
   }
 
   filtrar(event: Event){

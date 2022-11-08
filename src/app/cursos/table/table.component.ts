@@ -49,11 +49,11 @@ export class TableComponent implements OnInit, OnDestroy {
     this.dataSource.filter = valorObtenido.trim().toLocaleLowerCase();
   }
 
-  editar(){
-    this.dialog.open(EditarCursoComponent, {
-      width: '350px'
-    })
-  }
+ //editar(){
+ //  this.dialog.open(EditarCursoComponent, {
+ //    width: '850px'
+ //  })
+ //}
   eliminarCurso(id: number){
     this.cursosService.eliminarCurso(id);
     this.cursos$ = this.cursosService.obtenerCursos();
@@ -68,10 +68,10 @@ export class TableComponent implements OnInit, OnDestroy {
   //  console.log('boton de eliminar')
   //  this.dataSource.data = this.cursos
   //}
-  borrar(id: number) {
-    delete(this.cursos[id-1])
-    this.dataSource.data = this.cursos
-   }
+ //borrar(id: number) {
+ //  delete(this.cursos[id-1])
+ //  this.dataSource.data = this.cursos
+ // }
 
     ngOnDestroy(){
       this.suscripcion.unsubscribe();

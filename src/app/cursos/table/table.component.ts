@@ -56,7 +56,7 @@ export class TableComponent implements OnInit, OnDestroy {
  //}
   eliminarCurso(id: number){
     this.cursosService.eliminarCurso(id);
-    this.cursos$ = this.cursosService.obtenerCursos();
+    this.ngOnInit()
   }
 
   editarCurso(curso: Curso){

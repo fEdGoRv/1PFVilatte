@@ -1,1 +1,38 @@
-<p>student-new works!</p>
+<h1 mat-dialog-title>Add Student</h1>
+<div mat-dialog-content>
+    <form [formGroup]="formStudent" >
+        <mat-form-field >
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="nombre" placeholder="name">
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Surname</mat-label>
+            <input matInput formControlName="apellido" placeholder="Surname">
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="edad" placeholder="Age">
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Img</mat-label>
+            <input matInput formControlName="img" placeholder="img">
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="contrasena" placeholder="Password">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button (click)="guardar()">Guardar</button>
+</div>

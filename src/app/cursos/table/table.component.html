@@ -51,7 +51,7 @@
             <th mat-header-cell *matHeaderCellDef>Editar</th>
             <td mat-cell *matCellDef="let element">
                 <button mat-icon-button (click)="editarCurso(cursos[element.id-1])">
-                    <mat-icon>edit</mat-icon>
+                    <mat-icon class="edit">edit</mat-icon>
                 </button>
             </td>
         </ng-container>
@@ -61,7 +61,7 @@
             <th mat-header-cell *matHeaderCellDef>Borrar</th>
             <td mat-cell *matCellDef="let element">
                 <button mat-icon-button (click)="eliminarCurso(element.id)">
-                    <mat-icon>delete</mat-icon>
+                    <mat-icon class="delete">delete</mat-icon>
                 </button>
             </td>
         </ng-container>

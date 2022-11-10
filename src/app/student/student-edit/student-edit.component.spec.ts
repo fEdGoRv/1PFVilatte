@@ -1,4 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { StudentEditComponent } from './student-edit.component';
 
@@ -8,9 +11,14 @@ describe('StudentEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StudentEditComponent ]
+      declarations: [StudentEditComponent],
+      imports: [
+        RouterTestingModule,
+        MatDialogModule
+      ],
+      providers:[HttpClient,HttpHandler]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(StudentEditComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Curso } from '../models/curso';
 
@@ -10,39 +10,28 @@ import { Curso } from '../models/curso';
 
 export class CursosService {
 
-  constructor(
-    private http: HttpClient
-  ) {
-    
-  }
+  private httpHeaders : HttpHeaders = new HttpHeaders({
+    'content-type': 'aplication/json',
+      'encoding': 'UTF-8'})
+
+  constructor(private http: HttpClient) {}
 
   obtenerCursos(): Observable<Curso[]> {
-    return this.http.get<Curso[]>(`${environment.api}/cursos`, {
-      headers: new HttpHeaders({
-        'content-type': 'aplication/json',
-        'encoding': 'UTF-8'
-      })
-    }).pipe(catchError(this.manejarError));
+    return this.http.get<Curso[]>(`${environment.api}/cursos`,{headers:this.httpHeaders}).pipe(catchError(this.manejarError));
     
   }
   
 
   obtenerCurso(id: number): Observable<Curso> {
     return this.http.get<Curso>(`${environment.api}/cursos/${id}`, {
-      headers: new HttpHeaders({
-        'content-type': 'aplication/json',
-        'encoding': 'UTF-8'
-      })
+      headers:this.httpHeaders
     }).pipe(catchError(this.manejarError))
   }
   
 
   agregarCurso(curso: Curso) {
     this.http.post(`${environment.api}/cursos`, curso, {
-      headers: new HttpHeaders({
-        'content-type': 'aplication/json',
-        'encoding': 'UTF-8'
-      })
+      headers: this.httpHeaders
     }).pipe(catchError(this.manejarError)).subscribe(console.log)
   }
 

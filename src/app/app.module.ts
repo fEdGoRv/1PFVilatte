@@ -11,6 +11,7 @@ import { StudentModule } from './student/student.module';
 import { CoreModule } from './core/core.module';
 
 import { AutenticationModule } from './autentication/autentication.module';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -27,7 +28,10 @@ import { AutenticationModule } from './autentication/autentication.module';
     CoreModule,
     AutenticationModule
   ],
-  providers: [],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {}
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

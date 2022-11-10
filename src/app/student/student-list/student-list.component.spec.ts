@@ -1,4 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs';
+import { MaterialModule } from 'src/app/material/material.modul';
 
 import { StudentListComponent } from './student-list.component';
 
@@ -8,7 +11,9 @@ describe('StudentListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StudentListComponent ]
+      declarations: [ StudentListComponent ],
+      imports:[MaterialModule],
+      providers:[HttpClient,HttpHandler]
     })
     .compileComponents();
 

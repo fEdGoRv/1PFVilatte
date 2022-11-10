@@ -1,0 +1,12 @@
+img{
+    width: 100px;
+}
+.delete{
+    color: red;
+}
+.edit{
+    color: yellowgreen;
+}
+.fill{
+    width: 100%;
+}

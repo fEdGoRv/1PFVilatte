@@ -24,7 +24,6 @@ export class TableComponent implements OnInit, OnDestroy {
   
 
   constructor(
-    private dialog: MatDialog,
     private cursosService: CursosService,
     private router: Router
   ) {

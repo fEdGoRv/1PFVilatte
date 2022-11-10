@@ -4,3 +4,10 @@
 img{
     max-width: 150px;
 }
+
+.delete{
+    color: red;
+}
+.edit{
+    color: yellowgreen;
+}

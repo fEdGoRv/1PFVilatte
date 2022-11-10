@@ -1,4 +1,8 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from 'src/app/material/material.modul';
 
 import { EditarCursoComponent } from './editar-curso.component';
 
@@ -8,9 +12,11 @@ describe('EditarCursoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditarCursoComponent ]
+      declarations: [EditarCursoComponent],
+      imports: [MaterialModule, RouterTestingModule,BrowserAnimationsModule],
+      providers: [HttpClient, HttpHandler]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EditarCursoComponent);
     component = fixture.componentInstance;

@@ -1,74 +1,57 @@
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Persona } from '../models/persona';
-import { StudentNewComponent } from './student-new/student-new.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
-  public STUDENTS : Array<Persona> = [
-    {
-        id: 1,
-        nombre: 'Enrique',
-        apellido: 'Garcia',
-        edad: 28,
-        img: 'https://i.pinimg.com/474x/2e/ee/06/2eee0661f0f9f06a95a8fd35269f2b0e--kung-fu-panda-animation.jpg',
-        email: 'enrique****@gmail.com',
-        contrasena: 'asd147'
-    }, {
-        id: 2,
-        nombre: 'Pablo',
-        apellido: 'Armando',
-        edad: 32,
-        img: 'https://i.pinimg.com/222x/0d/4f/84/0d4f84081c19627e9ba1130651e9a339.jpg',
-        email: 'pablin@gmail.com',
-        contrasena: 'asd123'
-    }, {
-        id: 3,
-        nombre: 'Julio',
-        apellido: 'Blanco',
-        edad: 34,
-        img: 'https://i.pinimg.com/236x/97/15/0e/97150e0166fc22a4557efcbc3fe479cc--kung-fu-panda--pandas.jpg',
-        email: 'julioasd2@gmail.com',
-        contrasena: 'asd789'
-    }, {
-        id: 4,
-        nombre: 'Omar',
-        apellido: 'Salvadot',
-        edad: 48,
-        img: 'https://image.jimcdn.com/app/cms/image/transf/dimension=210x1024:format=png/path/s39145781b4b2fa7a/image/i8e80b058a09cb1e3/version/1474202594/image.png',
-        email: 'Omarsito@gmail.com',
-        contrasena: 'asd456'
-    }
-]; 
-
-
-  private studentSubject!: BehaviorSubject<Persona[]>;
-
-  constructor(private dialog: MatDialog) { }
-  
-  openDialog() {
-    let dialog = this.dialog.open(StudentNewComponent, {
-      width: '50%',
-      height: '50%',
-      
-    });
-  dialog.beforeClosed().subscribe(res => {
-    console.log(res);
-    this.STUDENTS.push(
-      {
-        ...res,
-        id:this.STUDENTS.length+1
-      }
-    )   
+  private httpHeaders: HttpHeaders = new HttpHeaders({
+    'content-type': 'aplication/json',
+    'encoding': 'UTF-8'
   })
-}
 
- obtenerStudents():Observable<Persona[]>{
-  return this.studentSubject.asObservable()
- } 
+  constructor(private http: HttpClient) { }
+
+
+  editarStudent(student: Persona) {
+    this.http.put(`${environment.api}/students/${student.id}`, student).pipe(catchError(this.manejarError)).subscribe(console.log)
+
+  }
+  obtenerStudents(): Observable<Persona[]> {
+    return this.http.get<Persona[]>(`${environment.api}/students`, { headers: this.httpHeaders }).pipe(catchError(this.manejarError));
+  }
+
+  obtenerStudent(id: number): Observable<Persona> {
+    return this.http.get<Persona>(`${environment.api}/students/${id}`, {
+      headers: this.httpHeaders
+    }).pipe(catchError(this.manejarError))
+  }
+
+  agregarStudent(student: Persona) {
+    this.http.post(`${environment.api}/students`, student, {
+      headers: this.httpHeaders
+    }).pipe(catchError(this.manejarError)).subscribe(console.log)
+  }
+
+  eliminarStudent(id: number) {
+    this.http.delete(`${environment.api}/students/${id}`).pipe(catchError(this.manejarError)).subscribe(console.log)
+  }
+
+
+
+
+  private manejarError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.warn('Error del lado del cliente', error.error.message);
+    } else {
+      console.warn('Error del lado del servidor', error.error.message);
+    }
+
+    return throwError(() => new Error('Error en la comunicacion HTTP'));
+  }
 
 }

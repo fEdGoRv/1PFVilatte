@@ -1,1 +1,53 @@
-<p>student-edit works!</p>
+<form [formGroup]="formulario" (ngSubmit)="editarStudent()">
+    <div class="row">
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Id</mat-label>
+                <input matInput formControlName="id">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="nombre">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Surname</mat-label>
+                <input matInput formControlName="apellido">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Age</mat-label>
+                <input matInput formControlName="edad">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Image</mat-label>
+                <input matInput formControlName="img">
+            </mat-form-field>
+        </div>
+        
+        <div class="col-md-4">
+            <mat-form-field appearance="fill" class="fill">
+                <mat-label>Contrasena</mat-label>
+                <input matInput formControlName="contrasena">
+            </mat-form-field>
+        </div>
+
+    </div>
+</form>

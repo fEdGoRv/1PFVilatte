@@ -11,7 +11,13 @@ import { StudentModule } from './student/student.module';
 import { CoreModule } from './core/core.module';
 
 import { AutenticationModule } from './autentication/autentication.module';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
+import { EffectsModule } from '@ngrx/effects';
+
 
 
 @NgModule({
@@ -26,7 +32,10 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
     CursosModule,
     StudentModule,
     CoreModule,
-    AutenticationModule
+    AutenticationModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [{
     provide: MatDialogRef,

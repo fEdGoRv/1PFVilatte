@@ -21,7 +21,6 @@ export class CursosService {
     
   }
   
-
   obtenerCurso(id: number): Observable<Curso> {
     return this.http.get<Curso>(`${environment.api}/cursos/${id}`, {
       headers:this.httpHeaders

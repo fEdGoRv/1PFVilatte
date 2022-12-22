@@ -37,7 +37,7 @@ export class EditarCursoComponent implements OnInit {
         imagen: parametros.get('imagen') || ''
       }
 
-      this.formulario = new FormGroup({
+      this.formulario = new FormGroup({ 
         nombre: new FormControl(parametros.get('nombre'), [Validators.required]),
         comision: new FormControl(parametros.get('comision')),
         profesor: new FormControl(parametros.get('profesor')),
